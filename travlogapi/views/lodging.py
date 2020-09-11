@@ -14,7 +14,7 @@ class LodgingSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'address', 'name', 'phone_number', 'website', 'check_in', 'check_out', 'notes', 'cost'
+          'id', 'url', 'address', 'name', 'phone_number', 'website', 'check_in', 'datetime', 'notes', 'cost'
         )
         depth = 2
 
@@ -28,7 +28,7 @@ class LodgingViewSet(ViewSet):
         lodging.phone_number = request.data['phone_number']
         lodging.website = request.data['website']
         lodging.check_in = request.data['check_in']
-        lodging.check_out = request.data['check_out']
+        lodging.datetime = request.data['datetime']
         lodging.notes = request.data['notes']
         lodging.cost = request.data['cost']
         lodging.day_itinerary = Day_itinerary.objects.get(pk=request.data['day_itinerary_id'])
@@ -46,7 +46,7 @@ class LodgingViewSet(ViewSet):
         lodging.phone_number = request.data['phone_number']
         lodging.website = request.data['website']
         lodging.check_in = request.data['check_in']
-        lodging.check_out = request.data['check_out']
+        lodging.datetime = request.data['datetime']
         lodging.notes = request.data['notes']
         lodging.cost = request.data['cost']
         lodging.day_itinerary = Day_itinerary.objects.get(pk=request.data['day_itinerary_id'])

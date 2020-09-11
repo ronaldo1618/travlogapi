@@ -14,7 +14,7 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'creator', 'title',
+          'id', 'url', 'creator', 'creator_id', 'title',
           'description', 'start_date', 'end_date', 'is_public'
         )
         depth = 2
@@ -81,13 +81,13 @@ class TripViewSet(ViewSet):
     def list(self, request):
 
         home_page = self.request.query_params.get('homepage', None)
-        history = self.request.query_params.get('history', None)
+        creator = self.request.query_params.get('creator', None)
         traveler = Traveler.objects.get(user=request.auth.user)
 
         trips = Trip.objects.all()
         # trips = Trip.objects.filter(creator_id=traveler.id)
 
-        if history is not None:
+        if creator is not None:
           trips = Trip.objects.filter(creator_id=traveler.id)
         if home_page is not None:
           trips = Trip.objects.filter(is_public = True)

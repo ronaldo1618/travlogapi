@@ -5,8 +5,16 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from travlogapi.models import Day_itinerary, Traveler, Trip
+from .activity import ActivitySerializer
+from .lodging import LodgingSerializer
+from .food import FoodSerializer
+from .transportation import TransportationSerializer
 
 class DayItinerarySerializer(serializers.HyperlinkedModelSerializer):
+    activities = ActivitySerializer(many=True, read_only=True)
+    lodging = LodgingSerializer(many=True, read_only=True)
+    food = FoodSerializer(many=True, read_only=True)
+    transportation = TransportationSerializer(many=True, read_only=True)
     class Meta:
         model = Day_itinerary
         url = serializers.HyperlinkedIdentityField(
@@ -14,7 +22,7 @@ class DayItinerarySerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'description', 'name', 'trip'
+          'id', 'url', 'description', 'name', 'trip', 'activities', 'lodging', 'food', 'transportation'
         )
         depth = 2
 

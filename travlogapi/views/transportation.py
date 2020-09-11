@@ -14,7 +14,7 @@ class TransportationSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'name', 'notes', 'dep_datetime', 'dep_info', 'arr_datetime', 'arr_info', 'day_itinerary', 'cost'
+          'id', 'url', 'name', 'notes', 'dep_datetime', 'dep_info', 'datetime', 'arr_info', 'day_itinerary', 'cost'
         )
         depth = 2
 
@@ -26,9 +26,9 @@ class TransportationsViewSet(ViewSet):
         transportation.name = request.data["name"]
         transportation.notes = request.data["notes"]
         transportation.cost = request.data["cost"]
-        transportation.dep_datetime = request.data['dep_datetime']
+        transportation.dep_datetime = request.data['datetime']
         transportation.dep_info = request.data['dep_info']
-        transportation.arr_datetime = request.data['arr_datetime']
+        transportation.datetime = request.data['datetime']
         transportation.arr_info = request.data['arr_info']
         transportation.day_itinerary = Day_itinerary.objects.get(pk=request.data['day_itinerary_id'])
         transportation.save()
@@ -45,7 +45,7 @@ class TransportationsViewSet(ViewSet):
         transportation.cost = request.data["cost"]
         transportation.dep_datetime = request.data['dep_datetime']
         transportation.dep_info = request.data['dep_info']
-        transportation.arr_datetime = request.data['arr_datetime']
+        transportation.datetime = request.data['datetime']
         transportation.arr_info = request.data['arr_info']
         transportation.day_itinerary = Day_itinerary.objects.get(pk=request.data['day_itinerary_id'])
         transportation.save()

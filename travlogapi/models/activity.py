@@ -9,7 +9,7 @@ class Activity(models.Model):
     notes = models.CharField(max_length=50)
     datetime = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     cost = models.FloatField(null=True, blank=True)
-    day_itinerary = models.ForeignKey(Day_itinerary, on_delete=models.DO_NOTHING)
+    day_itinerary = models.ForeignKey(Day_itinerary, related_name='activities', on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = ("activity")
