@@ -30,7 +30,7 @@ class TransportationsViewSet(ViewSet):
         transportation.dep_info = request.data['dep_info']
         transportation.datetime = request.data['datetime']
         transportation.arr_info = request.data['arr_info']
-        transportation.day_itinerary = Day_itinerary.objects.get(pk=request.data['day_itinerary_id'])
+        transportation.day_itinerary = Day_itinerary.objects.get(pk=int(request.data['day_itinerary_id']))
         transportation.save()
 
         serializer = TransportationSerializer(transportation, context={'request': request})
