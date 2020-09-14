@@ -14,7 +14,7 @@ class ActivitySerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'address', 'name', 'notes', 'cost', 'datetime', 'day_itinerary'
+          'id', 'url', 'address', 'name', 'notes', 'cost', 'datetime', 'day_itinerary', 'day_itinerary_id'
         )
         depth = 2
 

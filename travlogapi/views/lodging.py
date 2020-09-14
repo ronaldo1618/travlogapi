@@ -14,7 +14,7 @@ class LodgingSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'address', 'name', 'phone_number', 'website', 'check_in', 'datetime', 'notes', 'cost'
+          'id', 'url', 'address', 'name', 'phone_number', 'website', 'check_in', 'datetime', 'notes', 'cost', 'day_itinerary', 'day_itinerary_id'
         )
         depth = 2
 

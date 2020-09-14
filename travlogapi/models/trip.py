@@ -12,6 +12,7 @@ class Trip(models.Model):
     end_date = models.DateField(auto_now_add=False, null=True, blank=True)
     is_public = models.BooleanField()
     trip_length = models.IntegerField()
+    date_created = models.DateField(auto_now_add=True, null=True)
 
     class Meta:
         verbose_name = ("trip")

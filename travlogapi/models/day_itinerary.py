@@ -6,7 +6,7 @@ class Day_itinerary(models.Model):
 
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
-    trip = models.ForeignKey(Trip, on_delete=models.DO_NOTHING)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("day_itinerary")
