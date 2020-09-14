@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from travlogapi.models import Trip, Traveler, Day_itinerary
+from .day_itinerary import DayItinerarySerializer
 
 class TripSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -15,7 +16,7 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
         )
         fields = (
           'id', 'url', 'creator', 'creator_id', 'title',
-          'description', 'start_date', 'end_date', 'is_public'
+          'description', 'start_date', 'end_date', 'is_public', 'trip_length', 'date_created'
         )
         depth = 2
 

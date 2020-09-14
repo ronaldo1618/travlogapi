@@ -11,7 +11,7 @@ class Transportation(models.Model):
     arr_info = models.CharField(max_length=50)
     notes = models.CharField(max_length=50)
     cost = models.FloatField(null=True, blank=True)
-    day_itinerary = models.ForeignKey(Day_itinerary, related_name='transportation', on_delete=models.DO_NOTHING)
+    day_itinerary = models.ForeignKey(Day_itinerary, related_name='transportation', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("transportation")

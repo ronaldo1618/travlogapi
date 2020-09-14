@@ -4,7 +4,7 @@ from .day_itinerary import Day_itinerary
 
 class Lodging(models.Model):
 
-    day_itinerary = models.ForeignKey(Day_itinerary, related_name='lodging', on_delete=models.DO_NOTHING)
+    day_itinerary = models.ForeignKey(Day_itinerary, related_name='lodging', on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=100)

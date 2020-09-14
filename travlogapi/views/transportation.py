@@ -14,7 +14,7 @@ class TransportationSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'name', 'notes', 'dep_datetime', 'dep_info', 'datetime', 'arr_info', 'day_itinerary', 'cost'
+          'id', 'url', 'name', 'notes', 'dep_datetime', 'dep_info', 'datetime', 'arr_info', 'day_itinerary', 'day_itinerary_id', 'cost'
         )
         depth = 2
 
