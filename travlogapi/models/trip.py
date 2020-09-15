@@ -11,6 +11,7 @@ class Trip(models.Model):
     start_date = models.DateField(auto_now_add=False, null=True, blank=True)
     end_date = models.DateField(auto_now_add=False, null=True, blank=True)
     is_public = models.BooleanField()
+    homepage_trip = models.BooleanField()
     trip_length = models.IntegerField()
     date_created = models.DateField(auto_now_add=True, null=True)
 

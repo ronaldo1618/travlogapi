@@ -22,7 +22,7 @@ class DayItinerarySerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'description', 'name', 'trip', 'activities', 'lodging', 'food', 'transportation'
+          'id', 'url', 'description', 'name', 'trip', 'activities', 'lodging', 'food', 'transportation', 'trip_id'
         )
         depth = 2
 

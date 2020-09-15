@@ -1,0 +1,72 @@
+[
+    {
+        "model": "travlogapi.transportation",
+        "pk": 19,
+        "fields": {
+            "name": "Train ride",
+            "notes": "Sweet view, get a window!",
+            "dep_datetime": "2020-09-15 19:01:00",
+            "dep_info": "seat num 32",
+            "datetime": "2020-09-15 23:00:00",
+            "arr_info": "long ride...",
+            "day_itinerary_id": 25,
+            "cost": 350
+        }
+    },
+    {
+        "model": "travlogapi.transportation",
+        "pk": 20,
+        "fields": {
+            "name": "Train ride",
+            "notes": "Sweet view, get a window!",
+            "dep_datetime": "2020-09-15 19:01:00",
+            "dep_info": "seat num 32",
+            "datetime": "2020-09-15 23:00:00",
+            "arr_info": "long ride...",
+            "day_itinerary_id": 25,
+            "cost": 350
+        }
+    },
+    {
+        "model": "travlogapi.transportation",
+        "pk": 21,
+        "fields": {
+            "name": "Train ride",
+            "notes": "Sweet view, get a window!",
+            "dep_datetime": "2020-09-15 19:01:00",
+            "dep_info": "seat num 32",
+            "datetime": "2020-09-15 23:00:00",
+            "arr_info": "long ride...",
+            "day_itinerary_id": 25,
+            "cost": 350
+        }
+    },
+    {
+        "model": "travlogapi.transportation",
+        "pk": 22,
+        "fields": {
+            "name": "Train ride",
+            "notes": "Sweet view, get a window!",
+            "dep_datetime": "2020-09-15 19:01:00",
+            "dep_info": "seat num 32",
+            "datetime": "2020-09-15 23:00:00",
+            "arr_info": "long ride...",
+            "day_itinerary_id": 25,
+            "cost": 350
+        }
+    },
+    {
+        "model": "travlogapi.transportation",
+        "pk": 23,
+        "fields": {
+            "name": "Train ride",
+            "notes": "Sweet view, get a window!",
+            "dep_datetime": "2020-09-15 19:01:00",
+            "dep_info": "seat num 32",
+            "datetime": "2020-09-15 23:00:00",
+            "arr_info": "long ride...",
+            "day_itinerary_id": 25,
+            "cost": 350
+        }
+    }
+]

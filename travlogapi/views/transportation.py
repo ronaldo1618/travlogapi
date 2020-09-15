@@ -78,7 +78,6 @@ class TransportationsViewSet(ViewSet):
     def list(self, request):
 
         day_itinerary = self.request.query_params.get('day_itinerary', None)
- 
         transportations = Transportation.objects.all()
 
         if day_itinerary is not None:
