@@ -1,0 +1,92 @@
+[
+    {
+        "model": "travlogapi.trip",
+        "pk": 26,
+        "fields": {
+            "title": "Brisbane Trip",
+            "description": "BMX trip",
+            "start_date": "2020-09-24",
+            "end_date": "2020-11-24",
+            "is_public": 1,
+            "trip_length": 90,
+            "creator_id": 7,
+            "date_created": "2020-09-15",
+            "homepage_trip": 1
+        }
+    },
+    {
+        "model": "travlogapi.trip",
+        "pk": 27,
+        "fields": {
+            "title": "Kentucky Guide",
+            "description": "Guide to follow for kentucky trip",
+            "start_date": "2020-09-24",
+            "end_date": "2020-10-24",
+            "is_public": 1,
+            "trip_length": 60,
+            "creator_id": 7,
+            "date_created": "2020-09-15",
+            "homepage_trip": 0
+        }
+    },
+    {
+        "model": "travlogapi.trip",
+        "pk": 28,
+        "fields": {
+            "title": "Clarksville Trip",
+            "description": "Trip to clarksville to see friends",
+            "start_date": "2020-09-24",
+            "end_date": "2020-09-27",
+            "is_public": 1,
+            "trip_length": 3,
+            "creator_id": 7,
+            "date_created": "2020-09-15",
+            "homepage_trip": 0
+        }
+    },
+    {
+        "model": "travlogapi.trip",
+        "pk": 29,
+        "fields": {
+            "title": "Texas Trip",
+            "description": "BMX trip",
+            "start_date": "2020-09-24",
+            "end_date": "2020-11-24",
+            "is_public": 1,
+            "trip_length": 90,
+            "creator_id": 7,
+            "date_created": "2020-09-15",
+            "homepage_trip": 0
+        }
+    },
+    {
+        "model": "travlogapi.trip",
+        "pk": 30,
+        "fields": {
+            "title": "Brisbane Trip",
+            "description": "BMX trip",
+            "start_date": "2020-09-24",
+            "end_date": "2020-11-24",
+            "is_public": 1,
+            "trip_length": 90,
+            "creator_id": 7,
+            "date_created": "2020-09-15",
+            "homepage_trip": 1
+        }
+    },
+    {
+        "model": "travlogapi.trip",
+        "pk": 31,
+        "fields": {
+            "title": "Cali Trip",
+            "description": "Trip to see wild fires",
+            "start_date": "2020-09-24",
+            "end_date": "2020-11-24",
+            "is_public": 1,
+            "trip_length": 90,
+            "creator_id": 7,
+            "date_created": "2020-09-15",
+            "homepage_trip": 1
+        }
+    }
+]

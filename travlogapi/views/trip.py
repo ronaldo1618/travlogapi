@@ -6,6 +6,8 @@ from rest_framework import serializers
 from rest_framework import status
 from travlogapi.models import Trip, Traveler, Day_itinerary
 from .day_itinerary import DayItinerarySerializer
+from django.contrib.auth.decorators import user_passes_test
+from django.http import JsonResponse
 
 class TripSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -16,7 +18,7 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
         )
         fields = (
           'id', 'url', 'creator', 'creator_id', 'title',
-          'description', 'start_date', 'end_date', 'is_public', 'trip_length', 'date_created'
+          'description', 'start_date', 'end_date', 'is_public', 'trip_length', 'date_created', 'homepage_trip'
         )
         depth = 2
 
@@ -33,6 +35,13 @@ class TripViewSet(ViewSet):
         trip.end_date = request.data["end_date"]
         trip.is_public = request.data["is_public"]
         trip.trip_length = request.data["trip_length"]
+        trip.homepage_trip = request.data["homepage_trip"]
+        if trip.homepage_trip:
+                trips = Trip.objects.filter(creator_id=traveler.id, homepage_trip=True)
+                for tripObj in trips:
+                    if tripObj != trip:
+                        tripObj.homepage_trip = False
+                        tripObj.save()
         trip.save()
 
         serializer = TripSerializer(trip, context={'request': request})
@@ -43,17 +52,26 @@ class TripViewSet(ViewSet):
 
         traveler = Traveler.objects.get(user=request.auth.user)
         trip = Trip.objects.get(pk=pk)
-        trip.creator = traveler
-        trip.title = request.data["title"]
-        trip.description = request.data["description"]
-        trip.start_date = request.data["start_date"]
-        trip.end_date = request.data["end_date"]
-        trip.is_public = request.data["is_public"]
-        trip.trip_length = request.data["trip_length"]
-        trip.save()
-        serializer = TripSerializer(trip, context={'request': request})
-
-        return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+        if traveler.id == trip.creator_id:
+            trip.creator = traveler
+            trip.title = request.data["title"]
+            trip.description = request.data["description"]
+            trip.start_date = request.data["start_date"]
+            trip.end_date = request.data["end_date"]
+            trip.is_public = request.data["is_public"]
+            trip.homepage_trip = request.data["homepage_trip"]
+            trip.trip_length = request.data["trip_length"]
+            trip.save()
+            if trip.homepage_trip:
+                trips = Trip.objects.filter(creator_id=traveler.id, homepage_trip=True)
+                for tripObj in trips:
+                    if tripObj.id != trip.id:
+                        tripObj.homepage_trip = False
+                        tripObj.save()
+            serializer = TripSerializer(trip, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+        else:
+            return JsonResponse({'valid': False})
 
 
     def destroy(self, request, pk=None):
@@ -81,6 +99,7 @@ class TripViewSet(ViewSet):
 
     def list(self, request):
 
+        traveler_trip_homepage = self.request.query_params.get('user_homepage', None)
         home_page = self.request.query_params.get('homepage', None)
         creator = self.request.query_params.get('creator', None)
         traveler = Traveler.objects.get(user=request.auth.user)
@@ -92,6 +111,8 @@ class TripViewSet(ViewSet):
           trips = Trip.objects.filter(creator_id=traveler.id)
         if home_page is not None:
           trips = Trip.objects.filter(is_public = True)
+        if traveler_trip_homepage is not None:
+          trips = Trip.objects.filter(creator_id=traveler.id, homepage_trip=1)
 
         serializer = TripSerializer(
           trips,

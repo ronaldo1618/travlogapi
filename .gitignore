@@ -17,6 +17,9 @@ local_settings.py
 # dotenv
 .env
 
+node_modules
+package-lock.json
+
 # virtualenv
 travlogEnv/
 .vscode

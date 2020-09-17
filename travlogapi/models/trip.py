@@ -7,10 +7,11 @@ class Trip(models.Model):
 
     creator = models.ForeignKey(Traveler, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=50)
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=300, null=True)
     start_date = models.DateField(auto_now_add=False, null=True, blank=True)
     end_date = models.DateField(auto_now_add=False, null=True, blank=True)
     is_public = models.BooleanField()
+    homepage_trip = models.BooleanField()
     trip_length = models.IntegerField()
     date_created = models.DateField(auto_now_add=True, null=True)
 

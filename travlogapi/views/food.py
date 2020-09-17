@@ -14,7 +14,7 @@ class FoodSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field="id"
         )
         fields = (
-          'id', 'url', 'address', 'name', 'notes', 'datetime', 'cost', 'day_itinerary'
+          'id', 'url', 'address', 'name', 'notes', 'datetime', 'cost', 'day_itinerary', 'day_itinerary_id'
         )
         depth = 2
 
