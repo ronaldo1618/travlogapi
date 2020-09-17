@@ -66,19 +66,22 @@ class TravelerViewSet(ViewSet):
         Handling a PUT request for a traveler/user
         Returns -- Empty body with 204 status code
         '''
-        traveler = Traveler.objects.get(pk=pk)
-        traveler.bio = request.data['bio']
-        traveler.save()
+        try:
+            traveler = Traveler.objects.get(pk=pk)
+            traveler.bio = request.data['bio']
+            traveler.save()
 
-        user = User.objects.get(pk=traveler.user.id)
-        user.first_name = request.data['first_name']
-        user.last_name = request.data['last_name']
-        user.username = request.data['username']
-        # user.email = request.data['email']
-        # user.password = make_password(request.data['password'])
-        user.save()
+            user = User.objects.get(pk=traveler.user.id)
+            user.first_name = request.data['first_name']
+            user.last_name = request.data['last_name']
+            user.username = request.data['username']
+            # user.email = request.data['email']
+            # user.password = make_password(request.data['password'])
+            user.save()
 
-        return Response({}, status=status.HTTP_204_NO_CONTENT)
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
     def retrieve(self, request, pk=None):
         '''
