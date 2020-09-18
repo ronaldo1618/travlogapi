@@ -8,6 +8,7 @@ class Trip(models.Model):
     creator = models.ForeignKey(Traveler, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=300, null=True)
+    overlay_image = models.CharField(max_length=300, null=True)
     start_date = models.DateField(auto_now_add=False, null=True, blank=True)
     end_date = models.DateField(auto_now_add=False, null=True, blank=True)
     is_public = models.BooleanField()

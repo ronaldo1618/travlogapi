@@ -18,7 +18,7 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
         )
         fields = (
           'id', 'url', 'creator', 'creator_id', 'title',
-          'description', 'start_date', 'end_date', 'is_public', 'trip_length', 'date_created', 'homepage_trip'
+          'description', 'start_date', 'end_date', 'is_public', 'trip_length', 'date_created', 'homepage_trip', 'overlay_image'
         )
         depth = 2
 
@@ -31,6 +31,7 @@ class TripViewSet(ViewSet):
         trip.creator_id = traveler.id
         trip.title = request.data["title"]
         trip.description = request.data["description"]
+        trip.overlay_image = request.data["overlay_image"]
         trip.start_date = request.data["start_date"]
         trip.end_date = request.data["end_date"]
         trip.is_public = request.data["is_public"]
@@ -61,6 +62,7 @@ class TripViewSet(ViewSet):
             trip.is_public = request.data["is_public"]
             trip.homepage_trip = request.data["homepage_trip"]
             trip.trip_length = request.data["trip_length"]
+            trip.overlay_image = request.data["overlay_image"]
             trip.save()
             if trip.homepage_trip:
                 trips = Trip.objects.filter(creator_id=traveler.id, homepage_trip=True)
@@ -110,7 +112,7 @@ class TripViewSet(ViewSet):
         if creator is not None:
           trips = Trip.objects.filter(creator_id=traveler.id)
         if home_page is not None:
-          trips = Trip.objects.filter(is_public = True)
+          trips = Trip.objects.filter(is_public=True)
         if traveler_trip_homepage is not None:
           trips = Trip.objects.filter(creator_id=traveler.id, homepage_trip=1)
 
