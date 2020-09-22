@@ -104,17 +104,23 @@ class TripViewSet(ViewSet):
         traveler_trip_homepage = self.request.query_params.get('user_homepage', None)
         home_page = self.request.query_params.get('homepage', None)
         creator = self.request.query_params.get('creator', None)
+        profile = self.request.query_params.get('profile', None)
+        title = self.request.query_params.get('title', None)
         traveler = Traveler.objects.get(user=request.auth.user)
 
         trips = Trip.objects.all()
         # trips = Trip.objects.filter(creator_id=traveler.id)
 
         if creator is not None:
-          trips = Trip.objects.filter(creator_id=traveler.id)
+            trips = Trip.objects.filter(creator_id=traveler.id)
         if home_page is not None:
-          trips = Trip.objects.filter(is_public=True)
+            trips = Trip.objects.filter(is_public=True)
         if traveler_trip_homepage is not None:
-          trips = Trip.objects.filter(creator_id=traveler.id, homepage_trip=1)
+            trips = Trip.objects.filter(creator_id=traveler.id, homepage_trip=1)
+        if profile is not None:
+            trips = Trip.objects.filter(creator_id=int(profile), is_public=1)
+        if title is not None:
+            trips = trips.filter(title__startswith=title, is_public=1)
 
         serializer = TripSerializer(
           trips,
