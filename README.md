@@ -19,7 +19,7 @@
 
 ## Fetch calls
 
-Should you choose leverage this API for your own front-end application, please note that you will need to pass the Token in the headers for most requests.
+Should you choose to leverage this API for your own front-end application, please note that you will need to pass the Token in the headers for most requests.
 
 ## ERD
 
