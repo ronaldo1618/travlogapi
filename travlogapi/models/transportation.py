@@ -6,9 +6,9 @@ class Transportation(models.Model):
 
     name = models.CharField(max_length=50)
     dep_datetime = models.DateTimeField(auto_now_add=True, null=True)
-    dep_info = models.CharField(max_length=50, null=True)
+    # dep_info = models.CharField(max_length=50, null=True)
     datetime = models.DateTimeField(auto_now_add=False, null=True, blank=True)
-    arr_info = models.CharField(max_length=50, null=True)
+    # arr_info = models.CharField(max_length=50, null=True)
     notes = models.CharField(max_length=50, null=True)
     cost = models.FloatField(null=True, blank=True)
     day_itinerary = models.ForeignKey(Day_itinerary, related_name='transportation', on_delete=models.CASCADE)
