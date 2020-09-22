@@ -56,7 +56,7 @@ class TravelerSerializer(serializers.HyperlinkedModelSerializer):
             view_name = 'traveler',
             lookup_field = 'id'
         )
-        fields = ('id', 'url', 'user', 'bio')
+        fields = ('id', 'url', 'user', 'bio', 'profile_pic')
         depth = 2
 
 
@@ -69,11 +69,12 @@ class TravelerViewSet(ViewSet):
         try:
             traveler = Traveler.objects.get(pk=pk)
             traveler.bio = request.data['bio']
+            traveler.profile_pic = request.data['profile_pic']
             traveler.save()
 
             user = User.objects.get(pk=traveler.user.id)
-            user.first_name = request.data['first_name']
-            user.last_name = request.data['last_name']
+            # user.first_name = request.data['first_name']
+            # user.last_name = request.data['last_name']
             user.username = request.data['username']
             # user.email = request.data['email']
             # user.password = make_password(request.data['password'])
