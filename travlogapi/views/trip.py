@@ -120,7 +120,7 @@ class TripViewSet(ViewSet):
         if profile is not None:
             trips = Trip.objects.filter(creator_id=int(profile), is_public=1)
         if title is not None:
-            trips = trips.filter(title__startswith=title, is_public=1)
+            trips = trips.filter(title__contains=title, is_public=1)
 
         serializer = TripSerializer(
           trips,
