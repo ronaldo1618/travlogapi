@@ -109,7 +109,6 @@ class TripViewSet(ViewSet):
         traveler = Traveler.objects.get(user=request.auth.user)
 
         trips = Trip.objects.all()
-        # trips = Trip.objects.filter(creator_id=traveler.id)
 
         if creator is not None:
             trips = Trip.objects.filter(creator_id=traveler.id)
