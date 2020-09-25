@@ -27,9 +27,7 @@ class TransportationsViewSet(ViewSet):
         transportation.notes = request.data["notes"]
         transportation.cost = request.data["cost"]
         transportation.dep_datetime = request.data['datetime']
-        # transportation.dep_info = request.data['dep_info']
         transportation.datetime = request.data['datetime']
-        # transportation.arr_info = request.data['arr_info']
         transportation.day_itinerary = Day_itinerary.objects.get(pk=int(request.data['day_itinerary_id']))
         transportation.save()
 
@@ -44,9 +42,7 @@ class TransportationsViewSet(ViewSet):
         transportation.notes = request.data["notes"]
         transportation.cost = request.data["cost"]
         transportation.dep_datetime = request.data['dep_datetime']
-        # transportation.dep_info = request.data['dep_info']
         transportation.datetime = request.data['datetime']
-        # transportation.arr_info = request.data['arr_info']
         transportation.day_itinerary = Day_itinerary.objects.get(pk=request.data['day_itinerary_id'])
         transportation.save()
         serializer = TransportationSerializer(transportation, context={'request': request})
